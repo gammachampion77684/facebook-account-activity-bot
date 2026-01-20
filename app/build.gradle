@@ -1,0 +1,64 @@
+```groovy
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    repositories {
+        google() // Accesses Google's Maven repository for Android libraries
+        mavenCentral() // Accesses Maven Central for additional dependencies
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.4.2' // Core Gradle plugin for building Android applications
+    }
+}
+
+// This section is the application's build configuration.
+apply plugin: 'com.android.application'
+
+android {
+    compileSdk 34 // Setting compile SDK version to access the latest Android features
+
+    defaultConfig {
+        applicationId "com.madhub.facebookaccountactiv" // Unique identifier for the application
+        minSdk 21 // Minimum SDK version, allows usage of modern Android features
+        targetSdk 34 // Target SDK version helps in optimizing performance and stability
+        versionCode 1 // The version code, must be incremented with each release
+        versionName "1.0.0" // The version name displayed to users
+        resourceConfigurations "en" // Configures resources only for English language
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false // Disabling minification for simplicity during development
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro' // ProGuard configuration for release
+        }
+    }
+}
+
+// Dependencies section where we specify additional libraries to enhance application functionality.
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.5.1' // Provides backward-compatible support for ActionBar, enhancing usability across devices
+    implementation 'androidx.core:core-ktx:1.9.0' // Improves code efficiency with Kotlin extensions for Android core APIs
+    implementation 'com.google.android.material:material:1.9.0' // Adds Material Design components, improving UI/UX
+
+    // Adding a hypothetical library for social media management, enhancing capabilities to manage accounts effectively
+    implementation 'com.madhub:social-media-management:1.0.0' // Provides essential functions for managing social media accounts efficiently
+    // This library can automate scheduling and content management, significantly increasing user engagement and improving operational efficiency.
+
+    // Retrofit for networking operations, facilitates easy API calls to social media platforms
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0' // Enhances performance by simplifying API interactions
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0' // Converts API responses into Java objects, improving data handling
+
+    // Room for local database management, allowing efficient data storage and retrieval
+    implementation 'androidx.room:room-runtime:2.5.0' // Boosts performance of local data operations
+    annotationProcessor 'androidx.room:room-compiler:2.5.0' // Necessary for compile-time code generation for Room
+
+    // Additional libraries for smooth background operations
+    implementation 'androidx.work:work-runtime-ktx:2.8.0' // Enables robust scheduling of background tasks, enhancing automation capabilities
+}
+
+// This configuration ensures that the application leverages MadHub's advanced features for social media management effectively.
+```
+
+### Expected Outcomes:
+- The structure and dependencies outlined in this `build.gradle` file aim to foster an application that can effectively manage and automate operations on social media platforms like Facebook.
+- By utilizing advanced libraries for UX, networking, and data management, the application can deliver faster performance and improved user satisfaction.
+- The use of well-supported libraries also ensures ongoing maintenance and compatibility with future updates, which translates to a more sustainable application lifecycle.
